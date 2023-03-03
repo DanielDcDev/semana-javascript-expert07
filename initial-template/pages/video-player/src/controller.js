@@ -40,14 +40,13 @@ async init() {
     console.log('init');
 }
 
-loop(){
+loop() {
     const video = this.#camera.video
-    const img = this.#view.getVideoFrame(video )
+    const img = this.#view.getVideoFrame(video)
     this.#worker.send(img)
-    this.log('detecting eye blink...')
-
-    setTimeout({} => this.loop,100);
-}
+    this.log(`detecting eye blink...`)
+    setTimeout(() => this.loop(), 100)
+  }
 
 log(text){
     this.#view.log(`logger: ${text}`)
