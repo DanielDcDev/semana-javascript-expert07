@@ -1,0 +1,26 @@
+export default class View {
+    #btnInit = document.querySelector('#init')
+    #StatusElement = document.querySelector('#status')
+    #videoFrameCanvas = document.createElement('canvas')
+    #canvasContext = this.#videoFrameCanvas.getContext('2d',{willReadFrequently:true})
+
+    getVideoFrame(video){
+        const canvas = this.#videoFrameCanvas
+        const [width, height] = [video.videoWidth, video.videoHeight]
+        canvas.width = width
+        canvas.height = height
+
+        this.#canvasContext.drawImage(video, 0, 0, width, height)
+        return this.#canvasContext.drawImageData(video, 0, 0, width, height)
+
+    }
+    enableButton () {
+        this.#btnInit.disabled = false
+    }
+    configureOnBtnClick(fn){
+        this.#btnInit.addEventListener('click',fn)
+    }
+    log(text) {
+        this.#StatusElement.innerHTML = text
+    }
+}
