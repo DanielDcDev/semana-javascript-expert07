@@ -19,6 +19,7 @@ async function getWorker(){
 }
 const worker = await getWorker()
 
+
 const camera = Camera.init()
 const [rootPath] = window.location.href.split('/pages/')
 const factory = {
